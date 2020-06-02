@@ -1,3 +1,9 @@
 .home {
-  height: 100%;
+    display: flex;
+    flex-direction: row;
+    .navigation {
+        min-width: 200px;
+        height: 100vh;
+        background-color: #6d72c3;
+    }
 }

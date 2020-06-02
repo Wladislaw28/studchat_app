@@ -36,7 +36,7 @@ const DialogItem = ({
   lastMessage,
   userId,
 }) => (
-  <Link to={`/dialog/${_id}`}>
+  <Link to={`chat/dialog/${_id}`}>
     <div
       className={classNames('dialogs__item', {
         'dialogs__item--online': partner.isOnline,

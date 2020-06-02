@@ -30,8 +30,4 @@ const Avatar = ({ user }) => {
   }
 };
 
-Avatar.propTypes = {
-  className: PropTypes.string
-};
-
 export default Avatar;

@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { Route, Redirect, Switch } from "react-router-dom";
 
-import { Auth, Home } from "pages";
+import { Auth, Home } from "./pages";
 
 const App = props => {
   const { isAuth } = props;
