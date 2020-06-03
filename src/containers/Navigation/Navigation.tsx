@@ -1,10 +1,11 @@
 import React from 'react';
-import { Route, Switch, NavLink, withRouter } from "react-router-dom";
-import { Avatar, SignOutModal } from '../../components';
-
-import './Navigation.scss';
+import { NavLink, withRouter } from "react-router-dom";
+import { Avatar, SignOutModal, CreateNewsModal } from '../../components';
+import { CreateNews } from '../';
 import { connect } from 'react-redux';
 import { dialogsActions } from '../../redux/actions';
+
+import './Navigation.scss';
 
 const Navigation = (props: any) => {
     const { user } = props;
@@ -30,9 +31,7 @@ const Navigation = (props: any) => {
                     to="/calendar" activeStyle={{ color: `${activeNavLink === true && '#363976'}` }}>календарь</NavLink>
             </div>
             <div className="nav__bottomActionButtons">
-                <div className="addNews">
-                    +
-                </div>
+                <CreateNews />
                 <div className="signOut">
                     <button className="actionButton" onClick={() => {
                         setVisibleModalSignOut(!visibleModalSignOut);

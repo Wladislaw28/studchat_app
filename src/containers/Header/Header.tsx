@@ -3,22 +3,27 @@ import { connect } from 'react-redux';
 import { dialogsActions } from '../../redux/actions';
 import orderBy from "lodash/orderBy";
 import { Avatar } from '../../components';
+import { Empty } from 'antd';
+import { Link } from 'react-router-dom';
 
 import './Header.scss';
-import { Empty } from 'antd';
-import { Redirect } from 'react-router';
-import { Link } from 'react-router-dom';
 
 interface IHeaderProps {
     titleLogo?: string;
     isCompactMode: boolean;
     items: any;
     user: any;
+    fetchDialogs: any;
 }
 
 const Header = (props: IHeaderProps) => {
-    const { titleLogo, isCompactMode, user, items } = props;
-    console.log(items, user);
+    const { titleLogo, isCompactMode, user, items, fetchDialogs } = props;
+
+    React.useEffect(() => {
+        if (!items.length) {
+            return fetchDialogs()
+        }
+    }, [items])
 
     const renderEmptyDialogs = (): JSX.Element => {
         return (
@@ -27,7 +32,7 @@ const Header = (props: IHeaderProps) => {
                     description="Нет активных диалогов" style={{ 'color': '#ffff' }} />
             </div>
         )
-    }
+    };
 
     return (
         <div className={`header ${isCompactMode === true ? 'header__compact' : ''}`}>

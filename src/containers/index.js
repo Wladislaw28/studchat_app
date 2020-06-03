@@ -5,3 +5,4 @@ export { default as Status } from "./Status";
 export { default as Sidebar } from "./Sidebar";
 export { default as Navigation } from "./Navigation/Navigation";
 export { default as Header } from "./Header/Header";
+export { default as CreateNews } from "./CreateNews/CreateNews";
