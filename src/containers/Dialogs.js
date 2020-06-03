@@ -11,7 +11,6 @@ const Dialogs = ({ fetchDialogs, updateReadedStatus, currentDialogId, items, use
   const [filtred, setFiltredItems] = useState(Array.from(items));
 
   const onChangeInput = (value = '') => {
-    console.log(items);
     setFiltredItems(
       items.filter(
         dialog =>
@@ -41,7 +40,7 @@ const Dialogs = ({ fetchDialogs, updateReadedStatus, currentDialogId, items, use
       socket.removeListener('SERVER:NEW_MESSAGE', fetchDialogs);
     };
   }, []);
-
+  console.log(filtred)
   return (
     <BaseDialogs
       userId={userId}

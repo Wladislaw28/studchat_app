@@ -1,0 +1,57 @@
+.header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    background-color: #363976;
+    height: 280px;
+
+    .header__titleLogo {
+        color: #d9d9d9;
+        margin-left: 40px;
+        font-size: 28px;
+        line-height: 35px;
+    }
+
+    .header__logo {
+        height: 35px;
+        width: 49px;
+        margin-right: 40px;
+        margin-top: 30px;
+    }
+
+    .header__compactLogo {
+        margin-top: 2px;
+    }
+
+    .header__dialogs {
+        display: flex;
+        flex-flow: wrap;
+        height: 90px;
+        width: 900px;
+        margin-left: 70px;
+        margin-top: 30px;
+        .header__dialog {
+            height: 80px;
+            width: 80px;
+            cursor: pointer;
+            .avatar {
+                line-height: 75px;
+                font-size: 25px;
+            }
+            .header__dialogNotice {
+                position: relative;
+                margin-top: -80px;
+                margin-left: 55px;
+            }
+        }
+        .header__emtyDialog {
+            position: absolute;
+            top: 0;
+        }
+    }
+}
+
+.header__compact {
+    height: 38px;
+}

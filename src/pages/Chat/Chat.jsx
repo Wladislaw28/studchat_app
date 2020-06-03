@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { withRouter } from 'react-router';
-import { Messages, ChatInput, Status, Sidebar } from '../../containers';
+import { Messages, ChatInput, Status, Sidebar, Header } from '../../containers';
 import { connect } from 'react-redux';
 
 import './Chat.scss';
@@ -19,6 +19,9 @@ const Chat = (props) => {
 
     return (
         <section className="chat__container">
+            <div className="chat__header">
+                <Header isCompactMode={true} titleLogo="Studchat" />
+            </div>
             <div className="chat">
                 <Sidebar />
                 {user && (

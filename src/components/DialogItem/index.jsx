@@ -32,36 +32,38 @@ const DialogItem = ({
   text,
   isMe,
   currentDialogId,
+  author,
   partner,
   lastMessage,
   userId,
-}) => (
-  <Link to={`chat/dialog/${_id}`}>
-    <div
-      className={classNames('dialogs__item', {
-        'dialogs__item--online': partner.isOnline,
-        'dialogs__item--selected': currentDialogId === _id,
-      })}>
-      <div className="dialogs__item-avatar">
-        <Avatar user={partner} />
-      </div>
-      <div className="dialogs__item-info">
-        <div className="dialogs__item-info-top">
-          <b>{partner.fullName}</b>
-          <span>{getMessageTime(lastMessage.createdAt)}</span>
+}) => {
+  
+  return (
+    <Link to={`/chat/dialog/${_id}`}>
+      <div
+        className={classNames('dialogs__item', {
+          'dialogs__item--online': isMe === true ? partner.isOnline : author.isOnline,
+          'dialogs__item--selected': currentDialogId === _id,
+        })}>
+        <div className="dialogs__item-avatar">
+          <Avatar user={isMe === true ? partner : author} />
         </div>
-        <div className="dialogs__item-info-bottom">
-          <p>{renderLastMessage(lastMessage, userId)}</p>
-          {isMe && <IconReaded isMe={isMe} isReaded={lastMessage.readed} />}
-          {lastMessage.undread > 0 && (
-            <div className="dialogs__item-info-bottom-count">
-              {lastMessage.undread > 9 ? '+9' : lastMessage.undread}
-            </div>
-          )}
+        <div className="dialogs__item-info">
+          <div className="dialogs__item-info-top">
+            <b>{isMe === true ? partner.fullName : author.fullName}</b>
+            <span>{getMessageTime(lastMessage.createdAt)}</span>
+          </div>
+          <div className="dialogs__item-info-bottom">
+            <p>{renderLastMessage(lastMessage, userId)}</p>
+            {isMe && <IconReaded isMe={isMe} isReaded={lastMessage.readed} />}
+            {(!lastMessage.readed && lastMessage.user._id !== userId) && (
+              <div className="dialogs__item-info-bottom-count"> + </div>
+            )}
+          </div>
         </div>
       </div>
-    </div>
-  </Link>
-);
+    </Link>
+  )
+};
 
 export default DialogItem;

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Route, Switch, NavLink, withRouter } from "react-router-dom";
-import { Avatar } from '../../components';
+import { Avatar, SignOutModal } from '../../components';
 
 import './Navigation.scss';
 import { connect } from 'react-redux';
@@ -9,6 +9,7 @@ import { dialogsActions } from '../../redux/actions';
 const Navigation = (props: any) => {
     const { user } = props;
     const [activeNavLink, setActiveNavLink] = React.useState<boolean>(false);
+    const [visibleModalSignOut, setVisibleModalSignOut] = React.useState<boolean>(false);
 
     return (
         <div className="nav">
@@ -22,11 +23,11 @@ const Navigation = (props: any) => {
             </div>
             <div className="nav__links">
                 <NavLink onClick={() => { setActiveNavLink(!activeNavLink); }} to="/"
-                    activeStyle={{ color: `${activeNavLink === true && '#1890ff'}` }}>главная</NavLink>
+                    activeStyle={{ color: `${activeNavLink === true && '#363976'}` }}>главная</NavLink>
                 <NavLink onClick={() => { setActiveNavLink(!activeNavLink); }}
-                    to="/chat" activeStyle={{ color: `${activeNavLink === true && '#1890ff'}` }}>общий чат</NavLink>
+                    to="/chat" activeStyle={{ color: `${activeNavLink === true && '#363976'}` }}>общий чат</NavLink>
                 <NavLink onClick={() => { setActiveNavLink(!activeNavLink); }}
-                    to="/calendar" activeStyle={{ color: `${activeNavLink === true && '#1890ff'}` }}>календарь</NavLink>
+                    to="/calendar" activeStyle={{ color: `${activeNavLink === true && '#363976'}` }}>календарь</NavLink>
             </div>
             <div className="nav__bottomActionButtons">
                 <div className="addNews">
@@ -34,10 +35,11 @@ const Navigation = (props: any) => {
                 </div>
                 <div className="signOut">
                     <button className="actionButton" onClick={() => {
-                        localStorage.clear();
-                        location.reload()
+                        setVisibleModalSignOut(!visibleModalSignOut);
                     }}>выйти</button>
                 </div>
+                {visibleModalSignOut === true && <SignOutModal visible={visibleModalSignOut}
+                    setVisible={(arg: boolean) => setVisibleModalSignOut(!arg)} />}
             </div>
         </div>
     )

@@ -3,7 +3,7 @@ import { withRouter } from 'react-router';
 import { Route, Switch, NavLink } from "react-router-dom";
 import { connect } from 'react-redux';
 
-import { Messages, ChatInput, Status, Sidebar, Navigation } from 'containers';
+import { Messages, ChatInput, Status, Sidebar, Navigation, Header } from 'containers';
 
 import { dialogsActions } from '../../redux/actions';
 
@@ -41,7 +41,7 @@ const Calendar = () => {
 const Home1 = () => {
   return (
     <div>
-      Home1 page
+      <Header isCompactMode={false} />
     </div>
   )
 }
