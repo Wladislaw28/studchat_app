@@ -14,3 +14,4 @@ export { default as FormField } from "./FormField";
 export { default as UploadFiles } from "./UploadFiles";
 export { default as SignOutModal } from "./SignOutModal/SignOutModal";
 export { default as CreateNewsModal } from "./CreateNewsModal/CreateNewsModal";
+export { default as NewsItem } from "./NewsItem/NewsItem";

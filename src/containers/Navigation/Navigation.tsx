@@ -27,8 +27,8 @@ const Navigation = (props: any) => {
                     activeStyle={{ color: `${activeNavLink === true && '#363976'}` }}>главная</NavLink>
                 <NavLink onClick={() => { setActiveNavLink(!activeNavLink); }}
                     to="/chat" activeStyle={{ color: `${activeNavLink === true && '#363976'}` }}>общий чат</NavLink>
-                <NavLink onClick={() => { setActiveNavLink(!activeNavLink); }}
-                    to="/calendar" activeStyle={{ color: `${activeNavLink === true && '#363976'}` }}>календарь</NavLink>
+                {/* <NavLink onClick={() => { setActiveNavLink(!activeNavLink); }}
+                    to="/calendar" activeStyle={{ color: `${activeNavLink === true && '#363976'}` }}>календарь</NavLink> */}
             </div>
             <div className="nav__bottomActionButtons">
                 <CreateNews />

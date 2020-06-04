@@ -1,0 +1,8 @@
+.news {
+    height: 100%;
+    .news__newsItems {
+        display: flex;
+        flex-flow: wrap;
+        justify-content: center;
+    }
+}

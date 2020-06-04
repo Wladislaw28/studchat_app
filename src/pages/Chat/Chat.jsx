@@ -2,10 +2,9 @@ import React, { useEffect } from 'react';
 import { withRouter } from 'react-router';
 import { Messages, ChatInput, Status, Sidebar, Header } from '../../containers';
 import { connect } from 'react-redux';
+import { dialogsActions } from '../../redux/actions';
 
 import './Chat.scss';
-
-import { dialogsActions } from '../../redux/actions';
 
 const Chat = (props) => {
     const { setCurrentDialogId, user } = props;

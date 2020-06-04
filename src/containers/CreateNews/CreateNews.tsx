@@ -1,27 +1,37 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
 
-// import { userApi, dialogsApi } from "../../utils/api";
+import { userApi, newsApi } from "../../utils/api";
 
 import { CreateNewsModal } from '../../components';
 
 import './CreateNews.scss';
+import socket from "../../core/socket";
 
 const CreateNews = ({ user }: any) => {
     const [visible, setVisible] = useState<boolean>(false);
     const [inputValue, setInputValue] = useState("");
     const [descriptionText, setDescriptionText] = useState("");
+    const [categoryText, setCategoryText] = useState("");
+
+    // React.useEffect((),
+    //     []);
 
     const onAddNews = () => {
-        // dialogsApi
-        //   .create({
-        //     partner: selectedUserId,
-        //     text: messageText
-        //   })
-        //   .then(onClose)
-        //   .catch(() => {
-        //     setIsLoading(false);
-        //   });
+        newsApi
+            .createNews({
+                text: inputValue,
+                description: descriptionText,
+                category: categoryText
+            })
+            .then(() => {
+                socket.on('SERVER:NEW_NEWS', onAddNews);
+                setVisible(false);
+                setInputValue('');
+                setDescriptionText('');
+                setCategoryText('');
+                socket.removeListener('SERVER:NEW_NEWS', onAddNews);
+            })
     };
 
     const handleChangeInput = (e: any) => {
@@ -32,19 +42,26 @@ const CreateNews = ({ user }: any) => {
         setDescriptionText(e.target.value);
     };
 
+    const onChangeTextCategory = (e: any) => {
+        setCategoryText(e.target.value);
+    };
+
     return (
         <div>
             <div className="addNews" onClick={() => setVisible(!visible)}>
                 +
             </div>
-            {visible === true &&
+            {visible &&
                 <CreateNewsModal
                     inputValue={inputValue}
                     onChangeInput={handleChangeInput}
                     onChangeTextArea={onChangeTextArea}
                     descriptionText={descriptionText}
+                    categoryText={categoryText}
+                    onChangeTextCategory={onChangeTextCategory}
                     visible={visible}
                     setVisible={(arg: boolean) => setVisible(!arg)}
+                    onModalOk={onAddNews}
                 />
             }
         </div>

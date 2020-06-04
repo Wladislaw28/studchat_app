@@ -37,11 +37,11 @@ const Header = (props: IHeaderProps) => {
     return (
         <div className={`header ${isCompactMode === true ? 'header__compact' : ''}`}>
             {!!titleLogo && <h1 className="header__titleLogo">{titleLogo}</h1>}
-            {isCompactMode === false &&
+            {(user && isCompactMode === false) &&
                 <div className="header__dialogs">
                     {items.length
                         ? (
-                            orderBy(items, ["created_at"], ["desc"]).map(item => {
+                            orderBy(items, ["createdAt"], ["desc"]).map(item => {
                                 const isMe: boolean = user._id === item.partner.id;
                                 return (<Link key={isMe ? item.author.id : item.partner.id} to={`/chat/dialog/${item._id}`}
                                     style={{ 'marginRight': '20px' }}>
@@ -57,6 +57,7 @@ const Header = (props: IHeaderProps) => {
                         : renderEmptyDialogs()}
                 </div>
             }
+            {!isCompactMode && <h1 className="header__projectName">Studchat</h1>}
             <img className={`header__logo ${isCompactMode ? 'header__compactLogo' : ''}`}
                 src="https://times.bntu.by/data/uploads/logos/logo_bntu.png" alt="LogoBNTU" />
         </div>

@@ -1,17 +1,12 @@
-import React, { useEffect } from 'react';
-import { withRouter } from 'react-router';
-import { Route, Switch, NavLink } from "react-router-dom";
-import { connect } from 'react-redux';
-
-import { Messages, ChatInput, Status, Sidebar, Navigation, Header } from 'containers';
-
-import { dialogsActions } from '../../redux/actions';
-
+import React from 'react';
+import { Route, Switch } from "react-router-dom";
+import { Navigation } from 'containers';
 import Chat from '../Chat/Chat';
+import Main from '../Main/Main';
 
 import './Home.scss';
 
-const Home = (props) => {
+const Home = () => {
   return (
     <section className="home">
       <div className="navigation">
@@ -19,9 +14,9 @@ const Home = (props) => {
       </div>
       <div className="content">
         <Switch>
-          <Route exact path="/" component={Home1} />
+          <Route exact path="/" component={Main} />
           <Route path="/chat" component={Chat} />
-          <Route path="/calendar" component={Calendar} />
+          {/* <Route path={`/news`} component={News123} /> */}
         </Switch>
       </div>
     </section>
@@ -29,19 +24,3 @@ const Home = (props) => {
 };
 
 export default Home;
-
-const Calendar = () => {
-  return (
-    <div>
-      Calendar page
-    </div>
-  )
-}
-
-const Home1 = () => {
-  return (
-    <div>
-      <Header isCompactMode={false} />
-    </div>
-  )
-}
