@@ -42,6 +42,7 @@ const Header = (props: IHeaderProps) => {
                     {items.length
                         ? (
                             orderBy(items, ["createdAt"], ["desc"]).map(item => {
+                                console.log(item)
                                 const isMe: boolean = user._id === item.partner.id;
                                 return (<Link key={isMe ? item.author.id : item.partner.id} to={`/chat/dialog/${item._id}`}
                                     style={{ 'marginRight': '20px' }}>

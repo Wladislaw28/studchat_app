@@ -7,3 +7,4 @@ export { default as Navigation } from "./Navigation/Navigation";
 export { default as Header } from "./Header/Header";
 export { default as CreateNews } from "./CreateNews/CreateNews";
 export { default as News } from "./News";
+export { default as CurrentNews } from "./CurrentNews/CurrentNews";
