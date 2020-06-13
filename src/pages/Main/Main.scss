@@ -4,5 +4,12 @@
             position: relative;
             width: 100%;
         }
+        .main__container-currentNews {
+            position: absolute;
+            top: 0;
+            width: 83%;
+            margin: 0 30px;
+            margin-top: 120px;
+        }
     }
 }

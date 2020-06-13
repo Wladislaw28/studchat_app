@@ -2,7 +2,6 @@ import React from 'react';
 import { News, Header } from '../../containers';
 
 import './Main.scss';
-import { Switch, Route } from 'react-router';
 
 const Main = () => {
     return (

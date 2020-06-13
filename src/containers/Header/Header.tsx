@@ -14,10 +14,11 @@ interface IHeaderProps {
     items: any;
     user: any;
     fetchDialogs: any;
+    className?: string;
 }
 
 const Header = (props: IHeaderProps) => {
-    const { titleLogo, isCompactMode, user, items, fetchDialogs } = props;
+    const { className, titleLogo, isCompactMode, user, items, fetchDialogs } = props;
 
     React.useEffect(() => {
         if (!items.length) {
@@ -35,7 +36,7 @@ const Header = (props: IHeaderProps) => {
     };
 
     return (
-        <div className={`header ${isCompactMode === true ? 'header__compact' : ''}`}>
+        <div className={`header ${isCompactMode === true ? 'header__compact' : !!className ? className : ''}`}>
             {!!titleLogo && <h1 className="header__titleLogo">{titleLogo}</h1>}
             {(user && isCompactMode === false) &&
                 <div className="header__dialogs">
