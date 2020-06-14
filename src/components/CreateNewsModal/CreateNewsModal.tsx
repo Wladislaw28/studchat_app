@@ -4,7 +4,7 @@ import TextArea from 'antd/lib/input/TextArea';
 
 const CreateNewsModal = (props: any) => {
     const { visible, setVisible, inputValue, onChangeInput, onChangeTextArea,
-        descriptionText, categoryText, onChangeTextCategory, onModalOk } = props;
+        descriptionText, categoryText, onChangeTextCategory, onModalOk, imgUrl, onChangeImgUrl } = props;
     return (
         <div className="signOut__container">
             <Modal
@@ -43,6 +43,12 @@ const CreateNewsModal = (props: any) => {
                         <Input
                             value={categoryText}
                             onChange={onChangeTextCategory}
+                        />
+                    </Form.Item>
+                    <Form.Item label="Вставьте ссылку картинки">
+                        <Input
+                            value={imgUrl}
+                            onChange={onChangeImgUrl}
                         />
                     </Form.Item>
                 </Form>

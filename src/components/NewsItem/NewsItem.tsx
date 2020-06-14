@@ -16,6 +16,7 @@ interface INewsItemProps {
     author: any;
     user: any;
     onRemoveNews: any;
+    imgUrl: string;
 }
 
 const getMessageTime = (createdAt: any) => {
@@ -34,7 +35,8 @@ const NewsItem = ({
     createdAt,
     author,
     user,
-    onRemoveNews
+    onRemoveNews,
+    imgUrl
 }: INewsItemProps) => {
     const isMe: boolean = user._id === author._id;
     return (
@@ -44,7 +46,8 @@ const NewsItem = ({
                     <div className="news__item-category">
                         <h2>Категория: {category}</h2>
                     </div>
-                    <img className="news__item-img" src={'https://minsknews.by/wp-content/uploads/2016/08/BNTU-1.jpg'} alt="PicterNews" />
+                    <img className="news__item-img" src={!!imgUrl ? imgUrl : 'https://minsknews.by/wp-content/uploads/2016/08/BNTU-1.jpg'}
+                        alt="PicterNews" />
                     <div className="news__item-title">
                         <h1>{title}</h1>
                     </div>

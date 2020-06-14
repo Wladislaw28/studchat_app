@@ -13,16 +13,15 @@ const CreateNews = ({ user }: any) => {
     const [inputValue, setInputValue] = useState("");
     const [descriptionText, setDescriptionText] = useState("");
     const [categoryText, setCategoryText] = useState("");
-
-    // React.useEffect((),
-    //     []);
+    const [imgUrl, setImgUrl] = useState("");
 
     const onAddNews = () => {
         newsApi
             .createNews({
                 text: inputValue,
                 description: descriptionText,
-                category: categoryText
+                category: categoryText,
+                img: imgUrl
             })
             .then(() => {
                 socket.on('SERVER:NEW_NEWS', onAddNews);
@@ -30,6 +29,7 @@ const CreateNews = ({ user }: any) => {
                 setInputValue('');
                 setDescriptionText('');
                 setCategoryText('');
+                setImgUrl('');
                 socket.removeListener('SERVER:NEW_NEWS', onAddNews);
             })
     };
@@ -44,6 +44,10 @@ const CreateNews = ({ user }: any) => {
 
     const onChangeTextCategory = (e: any) => {
         setCategoryText(e.target.value);
+    };
+
+    const onChangeImgUrl = (e: any) => {
+        setImgUrl(e.target.value);
     };
 
     return (
@@ -62,6 +66,8 @@ const CreateNews = ({ user }: any) => {
                     visible={visible}
                     setVisible={(arg: boolean) => setVisible(!arg)}
                     onModalOk={onAddNews}
+                    imgUrl={imgUrl} 
+                    onChangeImgUrl={onChangeImgUrl}
                 />
             }
         </div>

@@ -42,6 +42,7 @@ const News = (props: any) => {
                             author={item.author}
                             user={user}
                             onRemoveNews={() => removeNewsById(item._id)}
+                            imgUrl={!!item.img ? item.img : ""}
                         />
                     ))
                 ) : (

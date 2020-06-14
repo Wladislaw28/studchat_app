@@ -39,7 +39,9 @@ const CurrentNewsItem = (props: ICurrentNewsItemProps) => {
                     </div>
                 </div>
                 <div className="currentNews__item-info-bottom">
-                    <img className="currentNews__item-imgPic" src={'https://minsknews.by/wp-content/uploads/2016/08/BNTU-1.jpg'} alt="PicterNews" />
+                    <img className="currentNews__item-imgPic" src={!!currentNews.img
+                        ? currentNews.img
+                        : 'https://minsknews.by/wp-content/uploads/2016/08/BNTU-1.jpg'} alt="PicterNews" />
                     <div className="currentNews__item-descriptionWithAuthorInfo">
                         <div className="currentNews__item-description">
                             <p>{currentNews.description}</p>
